@@ -1,0 +1,27 @@
+/* 
+    Created on : 03-10-2019, 18:45:56
+    Author     : Inge
+*/
+body{
+    box-sizing: border-box;
+}
+main.to_spalter{
+    display:flex;
+    justify-content:space-between;
+}
+form[action="/admin/create"] label {
+    display:flex;
+    flex-direction: column;
+    margin-top:1rem;
+}
+form[action="/admin/update"] input {
+    margin: .5rem 1rem .5rem 0;
+}
+
+form[action="/admin/update"] input[name="blogtxt"]{
+    width:250px;
+}
+li{
+    display:flex; 
+    align-items: baseline;
+}

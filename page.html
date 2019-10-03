@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="da">
+    <head>
+        <title>{{ title }}</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">    
+    </head>
+    <body>
+        <header>
+        </header>
+        <main>
+            {% if rows %}
+            <h1>{{ title }}</h1>
+            <ul>
+                {% for row in rows %}
+                <li><a href="/artikel/{{ row['id'] }}"> </a></li>
+                {% endfor %}
+            </ul>
+            {% else %}
+            <h1>{{ row['title'] }}</h1>
+            <!-- udskrift af éen blogpost/artikel-->
+            <img src="/static/img/{{ row['img'] }}"  >
+            {% endif %}
+        </main>
+        <footer></footer>
+    </body>
+</html>

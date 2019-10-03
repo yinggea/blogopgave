@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="da">
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">    
+    </head>
+    <body>
+        <main class="to_spalter">
+            <section>
+                <h2>Opret ny blogpost</h2>
+                <form action="/admin/create" enctype="multipart/form-data" method="post">
+                    <label>Titel<input name="title" id="title" type="text"></label>
+                    <label>Tekst<textarea name="blogtxt" id="blogtxt"></textarea></label>
+                    <label>Billede<input name="img" id="img" type="file"></label>
+                    <label><input type="submit" value="Gem"></label>
+                </form>
+            </section>
+
+            <section>
+                <h2>Slet eller ret blogposter (ikke list update!)</h2>
+                {% if posts %}
+                <ul>
+                    {% for post in posts %}
+                    <li>
+
+                        <form action="/admin/update" method="post">
+                            <input name="id" type="hidden" value="{{ post['id'] }}">
+                            <label>Titel: <input name="title" type="text" value="{{ post['title'] }}"></label>
+                            <label>Tekst: <input name="blogtxt" type="text" value="{{ post['blogtxt'] }}"></label>
+                            <input type="submit" value="Gem">
+                        </form>
+                        <form action="/admin/delete" method="post">
+                            <input name="id" type="hidden" value="{{ post['id'] }}">
+                            <input type="submit" value="Slet">
+                        </form>
+
+                    </li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+            </section>
+        </main>
+    </body>
+</html>
